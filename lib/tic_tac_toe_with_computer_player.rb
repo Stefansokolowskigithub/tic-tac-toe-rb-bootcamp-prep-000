@@ -61,8 +61,17 @@ def move(board, index, token)
   board[index] = token
 end
 
+def computer_lazy?($round)
+  chance = rand(100)
+  if $round > 5 && chance < 15
+    puts "The computer is feeling lazy and can't be bothered to play this round. You win by default."
+  end
+end
+
 def computer_turn(board)
   index = rand(8)
+
+  computer_lazy?()
 
   if valid_move?(board, index)
     move(board, index, current_player(board))
